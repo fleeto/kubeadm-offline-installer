@@ -1,0 +1,4 @@
+- name: Upload script
+  copy: src="/tmp/cluster.join.sh" dest="/usr/local/bin" mode=0755
+- name: Join the cluster
+  shell: "/usr/local/bin/cluster.join.sh"

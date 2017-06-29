@@ -1,0 +1,20 @@
+kubeadm_rpms:
+  - socat
+  - kubectl
+  - kubernetes-cni
+  - kubelet
+  - kubeadm
+kubeadm_images:
+  - etcd
+  - kube-apiserver
+  - kube-controller-manager
+  - kube-proxy
+  - kube-scheduler
+  - kube-dns
+  - dns-sidecar
+  - dns-masq
+  - calico-cni
+  - calico-etcd
+  - calico-node
+  - calico-policy-controller
+  - pause

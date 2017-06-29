@@ -1,0 +1,7 @@
+*.swap
+*.swp
+*.retry
+.DS_Store
+hosts.private.*
+*.gz
+*.rpm

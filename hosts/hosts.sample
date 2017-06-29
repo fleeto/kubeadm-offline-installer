@@ -1,0 +1,18 @@
+[remote]
+10.211.55.68
+10.211.55.69
+[master]
+10.211.55.68
+[node]
+10.211.55.69
+[etcd]
+10.211.55.68
+[dns]
+10.211.55.68
+[registry]
+10.211.55.68
+[proxy]
+10.211.55.4
+
+[local]
+localhost ansible_connection=local

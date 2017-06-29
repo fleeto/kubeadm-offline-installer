@@ -1,0 +1,17 @@
+- name: Processing rpms
+  include: rpm.yml
+  vars:
+    current_rpm: "{{ item }}"
+  with_items: "{{ kubeadm_rpms }}"
+- name: Install rpms
+  yum:
+    name: "/tmp/{{ item }}.rpm"
+    state: present
+  with_items: "{{ kubeadm_rpms }}"
+- name: Processing images
+  include: image.yml
+  vars:
+    current_image: "{{ item }}"
+  with_items: "{{ kubeadm_images }}"
+- name: Enable kubelet service
+  service: name=kubelet enabled=yes

@@ -1,0 +1,11 @@
+- hosts: remote
+  roles:
+    - common
+    - docker
+    - kubeadm
+- hosts: master
+  roles:
+    - master
+- hosts: node
+  roles:
+    - node

@@ -1,0 +1,13 @@
+---
+#docker_repo_base_url: "https://yum.dockerproject.org/repo/main/centos/7/"
+datadev: ""
+metadatadev: ""
+thinpooldev: /dev/mapper/docker-thinpool
+logsize: 10g
+#datadev: /dev/vgdocker/data
+#metadatadev: /dev/vgdocker/metadata
+#thinpooldev: /dev/mapper/docker-thinpool
+docker_package:
+  - libseccomp-2.3.1-2.el7.x86_64.rpm
+  - libtool-ltdl-2.4.2-21.el7_2.x86_64.rpm
+  - docker.engine.selinux.rpm

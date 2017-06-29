@@ -1,0 +1,25 @@
+- name: Setting up the cluster
+  template:
+    src: "templates/cluster.init.sh.j2"
+    dest: "/usr/local/bin/cluster.init.sh"
+    mode: 0755
+- shell: "/usr/local/bin/cluster.init.sh"
+- name: Move config file
+  file: path="/root/.kube" state="directory"
+- shell: "cp /etc/kubernetes/admin.conf /root/.kube/config"
+- name: Upload calico.yaml
+  copy: src="files/calico.yaml" dest="/tmp"
+- name: Run calico
+  shell: "kubectl create -f /tmp/calico.yaml"
+- name: Create shell script to add node to the cluster
+  set_fact: master_url="{{ groups['master'][0] }}:6443"
+- template:
+    src: "templates/get_join_command.sh.j2"
+    dest: "/tmp/get_join_command.sh"
+    mode: 0755
+- shell: "/tmp/get_join_command.sh"
+- fetch:
+    src: "/tmp/cluster.join.sh"
+    dest: "/tmp"
+    flat: yes
+  ignore_errors: yes

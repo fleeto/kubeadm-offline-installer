@@ -1,0 +1,9 @@
+#!/bin/sh
+TOKEN=`kubeadm token list | grep boot | awk '{print $1}'`
+
+cat <<EOF >/tmp/cluster.join.sh
+#!/bin/sh
+kubeadm join --token $TOKEN  {{ master_url }}
+EOF
+
+chmod a+x /tmp/cluster.join.sh

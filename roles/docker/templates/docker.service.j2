@@ -1,0 +1,35 @@
+[Unit]
+Description=Docker Application Container Engine
+Documentation=http://docs.docker.com
+After=network.target docker.socket
+
+[Service]
+Type=notify
+WorkingDirectory=/usr/local/bin
+ExecStart=/usr/bin/dockerd \
+                -H tcp://127.0.0.1:4243 \
+                -H unix:///var/run/docker.sock \
+                --selinux-enabled=false \
+                --exec-opt native.cgroupdriver=systemd \
+                $DOCKER_STORAGE \
+                $DOCKER_LOG \
+                $DOCKER_OTHERS
+
+ExecReload=/bin/kill -s HUP $MAINPID
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+# Uncomment TasksMax if your systemd version supports it.
+# Only systemd 226 and above support this version.
+#TasksMax=infinity
+TimeoutStartSec=0
+# set delegate yes so that systemd does not reset the cgroups of docker containers
+Delegate=yes
+# kill only the docker process, not all processes in the cgroup
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

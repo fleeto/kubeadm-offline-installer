@@ -1,0 +1,33 @@
+---
+- name: if docker_repo_base_url is defined, we will install from docker repo
+  include: yum.install.yml
+  when: docker_repo_base_url | default("")  != ""
+
+- name: else , install docker from local file.
+  include: file.install.yml
+  when: docker_repo_base_url | default("")  == ""
+
+- name: Creates directory
+  file: path=/etc/systemd/system/docker.service.d/ state=directory
+
+- name: Create Service file
+  template: src=templates/docker.service.j2 dest=/usr/lib/systemd/system/docker.service
+
+- name: Log Size
+  template: src=templates/log.conf.j2 dest=/etc/systemd/system/docker.service.d/log.conf
+
+# select different storage conf
+- include: direct-lvm.yml
+  when: datadev != ""
+- include: thinpool.yml
+  when: thinpooldev != ""
+
+# if proxy_host != "" and docker_proxy==1 , then make a proxy env file for docker
+- name: Make proxy.conf if we need it.
+  template: src=templates/proxy.conf.j2 dest=/etc/systemd/system/docker.service.d/proxy.conf
+  when: (proxy_host | default("") != "") and (docker_proxy == 1) 
+
+- name: Refresh systemd
+  shell: systemctl daemon-reload
+- name: Enable the service
+  service: name=docker state=started enabled=yes
