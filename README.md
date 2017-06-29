@@ -23,6 +23,6 @@ playbook, working for minimal CentOS 7, can install a cluster without internet.
 
 ## Features
 
-1. Offlineq
+1. Offline.
 2. Support for different lvm configuration in CentOS.
 3. Calico plugins included.
