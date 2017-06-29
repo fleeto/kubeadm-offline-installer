@@ -14,12 +14,13 @@ playbook, working for minimal CentOS 7, can install a cluster without internet.
 
 `ansible-playbook -i hosts/hosts.sample -u root cluster.yml`
 
-1. Write down ip in the hosts file, here is a sample in `hosts/hosts.sample`.
-2. Change the variables in `group_vars/all`.
-3. Run the playbook.
-4. You can find init/join script in `/usr/local/bin`.
-5. Configuration files are stored in Master node's `/etc/kubernetes`
-5. Enjoy it.
+1. Download and extract bin package from [Releases tab](https://github.com/fleeto/kubeadm-offline-installer/releases)
+2. Write down ip in the hosts file, here is a sample in `hosts/hosts.sample`.
+3. Change the variables in `group_vars/all`.
+4. Run the playbook.
+5. You can find init/join script in `/usr/local/bin`.
+6. Configuration files are stored in Master node's `/etc/kubernetes`
+7. Enjoy it.
 
 ## Features
 
