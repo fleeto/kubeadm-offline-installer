@@ -9,3 +9,6 @@
 - hosts: node
   roles:
     - node
+- hosts: master
+  roles:
+    - cleanup

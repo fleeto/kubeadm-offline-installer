@@ -1,20 +1,20 @@
 kubeadm_rpms:
-  - socat
-  - kubectl
-  - kubernetes-cni
-  - kubelet
-  - kubeadm
+  - "socat-1.7.2.2"
+  - "kubectl-{{ main_version }}"
+  - "kubernetes-cni-0.5.1"
+  - "kubelet-{{ main_version }}"
+  - "kubeadm-{{ kubeadm_version }}"
 kubeadm_images:
-  - etcd
-  - kube-apiserver
-  - kube-controller-manager
-  - kube-proxy
-  - kube-scheduler
-  - kube-dns
-  - dns-sidecar
-  - dns-masq
-  - calico-cni
-  - calico-etcd
-  - calico-node
-  - calico-policy-controller
-  - pause
+  - "etcd-{{ etcd_version }}"
+  - "kube-apiserver-{{ main_version }}"
+  - "kube-controller-manager-{{ main_version }}"
+  - "kube-proxy-{{ main_version }}"
+  - "kube-scheduler-{{ main_version }}"
+  - "kubedns-{{ dns_version }}"
+  - "dns-sidecar-{{ dns_version }}"
+  - "dns-masq-{{ dns_version }}"
+  - "calico-cni"
+  - "calico-etcd"
+  - "calico-node"
+  - "calico-policy-controller"
+  - "pause-{{ pause_version }}"

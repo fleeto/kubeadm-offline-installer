@@ -1,0 +1,3 @@
+- name: Remove crontab
+  cron:  name="auto approval" state="absent"
+  ignore_errors: yes

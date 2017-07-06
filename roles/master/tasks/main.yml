@@ -3,7 +3,8 @@
     src: "templates/cluster.init.sh.j2"
     dest: "/usr/local/bin/cluster.init.sh"
     mode: 0755
-- shell: "/usr/local/bin/cluster.init.sh"
+- name: kubeadm init
+  shell: "/usr/local/bin/cluster.init.sh"
 - name: Move config file
   file: path="/root/.kube" state="directory"
 - shell: "cp /etc/kubernetes/admin.conf /root/.kube/config"
@@ -23,3 +24,9 @@
     dest: "/tmp"
     flat: yes
   ignore_errors: yes
+- name: 1.7.0 Only, buggy..
+  copy: src="files/auto_approval.sh" dest="/usr/local/bin/" mode="0755"
+- name: 1.7.0 Only, buggy.
+  cron:
+    name: "auto approval"  
+    job: "/usr/local/bin/auto_approval.sh"

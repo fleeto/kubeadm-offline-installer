@@ -1,4 +1,7 @@
 # kubeadm-offline-installer
+
+- Upgraded to v1.7.0 
+
 > Setup a cluster with kubeadm, without internet connections.
 
 [Kubeadm](https://kubernetes.io/docs/setup/independent/install-kubeadm/) is a

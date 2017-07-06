@@ -5,3 +5,4 @@
 hosts.private.*
 *.gz
 *.rpm
+test.yml
