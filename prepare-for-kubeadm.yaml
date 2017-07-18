@@ -1,0 +1,5 @@
+- hosts: remote
+  roles:
+    - common
+    - docker
+    - kubeadm
