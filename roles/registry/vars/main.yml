@@ -1,0 +1,11 @@
+cert_dest_path: /etc/registry/pki
+cert_src_path: /etc/registry/pki
+
+cert_config_file: "config.json"
+cert_profile_name: "server"
+cert_input_file: "registry.json"
+cert_output_file: "registry"
+cert_task: "server"
+
+registry_data_path: "/var/data/registry"
+registry_port: 5000

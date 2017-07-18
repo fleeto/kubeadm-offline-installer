@@ -1,0 +1,4 @@
+#!/bin/sh
+cd {{ remote_cert_path }}
+# CA
+cfssl gencert -initca ca-csr.json | cfssljson -bare ca

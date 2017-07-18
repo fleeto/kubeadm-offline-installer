@@ -15,3 +15,11 @@ proxy_env:
 docker_proxy: 1
 
 remove_search_in_resolve: 1
+
+cert_remote_path: /etc/kubernetes/pki
+cert_local_path: /tmp/cert
+cert_ca_cert_name: ca.crt
+cert_ca_key_name: ca.key
+cert_expiration: 87600h
+cert_dest_path: /etc/registry/pki
+cert_src_path: /etc/registry/pki

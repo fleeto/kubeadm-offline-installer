@@ -1,0 +1,6 @@
+- hosts: master
+  roles:
+    - fetch_certs
+- hosts: registry
+  roles:
+    - registry

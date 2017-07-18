@@ -1,0 +1,12 @@
+#!/bin/sh
+
+#-e REGISTRY_AUTH_HTPASSWD_PATH=/certs/auth.passwd  \
+docker run -d \
+   --name="registry2" \
+   -v {{ registry_data_path }}:/var/lib/registry \
+   -p {{ registry_port }}:5000 \
+  -v {{ cert_dest_path }}:/certs \
+  -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/{{ cert_output_file }}.pem \
+  -e REGISTRY_HTTP_TLS_KEY=/certs/{{ cert_output_file }}-key.pem \
+   --restart=always \
+   registry:2.6.1
