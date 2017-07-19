@@ -1,6 +1,10 @@
 # kubeadm-offline-installer
 
-- Upgraded to v1.7.0 
+- Upgraded to v1.7.1
+
+没有好的完整的网络连接，Kubernetes 是很难搞的。
+
+这里给出一个离线安装的 Release，尽量跟踪更新最新版本，给网络没那么方便的朋友们拿来玩。
 
 > Setup a cluster with kubeadm, without internet connections.
 

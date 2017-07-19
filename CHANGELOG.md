@@ -1,4 +1,8 @@
-
+## 02/29/2017
+Upgraded to 1.7.1.
+Removed tricks for 1.7.0.
+Added Registry.
+I have to skip pre-flight check to add new node.
 
 ## 07/06/2017
 Upgraded to 1.7.0.
