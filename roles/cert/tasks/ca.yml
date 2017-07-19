@@ -1,0 +1,7 @@
+- name: Upload shell script
+  template:
+    src: "templates/cfssl-ca.sh.j2"
+    dest: "/tmp/cfssl-ca.sh"
+    mode: 0755
+- name: Execute script to generate cert file.
+  shell: "/tmp/cfssl-ca.sh"

@@ -1,9 +1,9 @@
 
-main_version: "v1.7.0"
+main_version: "v1.7.1"
 etcd_version: "3.0.17"
-dns_version: "1.14.2"
+dns_version: "1.14.4"
 pause_version: "3.0"
-kubeadm_version: "v1.6.6"
+kubeadm_version: "v1.7.1"
 kubeadm_init_options: ""
 
 # Proxy Related
@@ -12,14 +12,19 @@ proxy_port: "8016"
 proxy_env:
   - http_proxy: ""
     https_proxy: ""
-docker_proxy: 1
+docker_proxy: 0
 
 remove_search_in_resolve: 1
 
-cert_remote_path: /etc/kubernetes/pki
 cert_local_path: /tmp/cert
-cert_ca_cert_name: ca.crt
-cert_ca_key_name: ca.key
-cert_expiration: 87600h
-cert_dest_path: /etc/registry/pki
-cert_src_path: /etc/registry/pki
+registry_cert_path: /etc/registry/pki
+ca_output_file: "ca"
+ca_input_file: "ca.csr.json"
+cert_ca_cert_name: "{{ ca_output_file }}.pem"
+cert_ca_key_name: "{{ ca_output_file }}-key.pem"
+
+deploy_package:
+  - calico
+  - pause
+registry_port: 5000
+yaml_root: /root/deployed_yaml

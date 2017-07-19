@@ -1,7 +1,4 @@
 ---
-- name: include proxy.yml if proxy_host is defined.
-  include_vars: proxy.yml
-  when: proxy_host | default("") != ""
 - name: Disable selinux
   selinux: state=disabled
 - name: turn off some services
@@ -10,5 +7,8 @@
     - firewalld
   ignore_errors: yes
 - name: Remove search line in /etc/resolv.conf
-  shell: "sed -i 's/search.*//g' /etc/resolv.conf"
+  lineinfile:
+    path: /etc/resolv.conf
+    state: absent
+    regexp: '^search\s+.*?$'
   when: remove_search_in_resolve == 1

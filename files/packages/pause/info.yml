@@ -1,0 +1,6 @@
+images:
+  - file: "pause-amd64-3.0.tar.gz"
+    src: "gcr.io/google_containers/pause-amd64:3.0"
+    dest: "pause:3.0"
+templates: []    
+entry: []

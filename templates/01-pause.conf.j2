@@ -1,0 +1,2 @@
+[Service]
+Environment="KUBELET_EXTRA_ARGS=--pod-infra-container-image={{ groups['registry'][0]}}:{{ registry_port}}/pause:3.0"

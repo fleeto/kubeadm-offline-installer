@@ -8,10 +8,10 @@
 - name: Move config file
   file: path="/root/.kube" state="directory"
 - shell: "cp /etc/kubernetes/admin.conf /root/.kube/config"
-- name: Upload calico.yaml
-  copy: src="files/calico.yaml" dest="/tmp"
-- name: Run calico
-  shell: "kubectl create -f /tmp/calico.yaml"
+# - name: Upload calico.yaml
+#   copy: src="files/calico.yaml" dest="/tmp"
+# - name: Run calico
+#   shell: "kubectl create -f /tmp/calico.yaml"
 - name: Create shell script to add node to the cluster
   set_fact: master_url="{{ groups['master'][0] }}:6443"
 - template:
@@ -24,9 +24,9 @@
     dest: "/tmp"
     flat: yes
   ignore_errors: yes
-- name: 1.7.0 Only, buggy..
-  copy: src="files/auto_approval.sh" dest="/usr/local/bin/" mode="0755"
-- name: 1.7.0 Only, buggy.
-  cron:
-    name: "auto approval"  
-    job: "/usr/local/bin/auto_approval.sh"
+# - name: 1.7.0 Only, buggy..
+#   copy: src="files/auto_approval.sh" dest="/usr/local/bin/" mode="0755"
+# - name: 1.7.0 Only, buggy.
+#   cron:
+#     name: "auto approval"
+#     job: "/usr/local/bin/auto_approval.sh"

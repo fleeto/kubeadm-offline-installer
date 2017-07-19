@@ -9,5 +9,5 @@ logsize: 10g
 #thinpooldev: /dev/mapper/docker-thinpool
 docker_package:
   - libseccomp-2.3.1-2.el7.x86_64.rpm
-  - libtool-ltdl-2.4.2-22.el7_2.x86_64.rpm
+  - libtool-ltdl-2.4.2-22.el7_3.x86_64.rpm
   - docker.engine.selinux.rpm

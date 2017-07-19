@@ -1,4 +1,4 @@
 #!/bin/sh
-cd {{ remote_cert_path }}
-# CA
-cfssl gencert -initca ca-csr.json | cfssljson -bare ca
+INPUT="{{ cert_src_path }}/{{ ca_input_file }}"
+OUTPUT="{{ cert_src_path }}/{{ ca_output_file }}"
+cfssl gencert -initca "$INPUT" | cfssljson -bare "$OUTPUT"

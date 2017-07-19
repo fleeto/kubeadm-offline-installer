@@ -1,9 +1,9 @@
-# Calico Version master
-# http://docs.projectcalico.org/master/releases#master
+# Calico Version v2.3.0
+# http://docs.projectcalico.org/v2.3/releases#v2.3.0
 # This manifest includes the following component versions:
-#   calico/node:master
-#   calico/cni:master
-#   calico/kube-policy-controller:master
+#   calico/node:v1.3.0
+#   calico/cni:v1.9.1
+#   calico/kube-policy-controller:v0.6.0
 
 # This ConfigMap is used to configure a self-hosted Calico installation.
 kind: ConfigMap
@@ -76,7 +76,7 @@ spec:
       hostNetwork: true
       containers:
         - name: calico-etcd
-          image: gcr.io/google_containers/etcd:2.2.1
+          image: "{{ image_prefix }}/calico/etcd:2.2.1"
           env:
             - name: CALICO_ETCD_IP
               valueFrom:
@@ -153,7 +153,7 @@ spec:
         # container programs network policy and routes on each
         # host.
         - name: calico-node
-          image: quay.io/calico/node:master
+          image: "{{ image_prefix }}/calico/node:1.3.0"
           env:
             # The location of the Calico etcd cluster.
             - name: ETCD_ENDPOINTS
@@ -202,7 +202,7 @@ spec:
         # This container installs the Calico CNI binaries
         # and CNI network config file on each node.
         - name: install-cni
-          image: quay.io/calico/cni:master
+          image: "{{ image_prefix }}/calico/cni:1.9.1"
           command: ["/install-cni.sh"]
           env:
             # The location of the Calico etcd cluster.
@@ -279,7 +279,7 @@ spec:
       serviceAccountName: calico-policy-controller
       containers:
         - name: calico-policy-controller
-          image: quay.io/calico/kube-policy-controller:master
+          image: "{{ image_prefix }}/calico/kube-policy-controller:0.6.0"
           env:
             # The location of the Calico etcd cluster.
             - name: ETCD_ENDPOINTS

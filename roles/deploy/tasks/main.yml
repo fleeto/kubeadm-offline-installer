@@ -1,0 +1,11 @@
+- copy: src=utils/load_tag_push.sh dest=/usr/local/bin/ mode=0755
+- set_fact:
+    image_prefix: "{{ groups['registry'][0]}}:{{ registry_port}}"
+- include: "image.yml"
+  vars:
+    current_package: "{{ item }}"
+  with_items: "{{ deploy_package }}"
+- include: "template.yml"
+  vars:
+    current_package: "{{ item }}"
+  with_items: "{{ deploy_package }}"

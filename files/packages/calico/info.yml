@@ -1,0 +1,17 @@
+images:
+  - file: "etcd-2.2.1.tar.gz"
+    src: "gcr.io/google_containers/etcd:2.2.1"
+    dest: "calico/etcd:2.2.1"
+  - file: "node-v1.3.0.tar.gz"
+    src: "quay.io/calico/node:v1.3.0"
+    dest: "calico/node:1.3.0"
+  - file: "cni-v1.9.1.tar.gz"
+    src: "quay.io/calico/cni:v1.9.1"
+    dest: "calico/cni:1.9.1"
+  - file: "kube-policy-controller-v0.6.0.tar.gz"
+    src: "quay.io/calico/kube-policy-controller:v0.6.0"
+    dest: "calico/kube-policy-controller:0.6.0"
+templates:
+  - calico.yaml
+entry:
+  - calico.yaml

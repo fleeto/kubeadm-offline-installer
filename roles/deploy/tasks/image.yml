@@ -1,0 +1,13 @@
+- include_vars: "files/packages/{{ current_package }}/info.yml"
+- set_fact:
+    image_path: "files/images"
+- name: Upload images
+  copy: src="{{ image_path }}/{{ image_item.file }}" dest=/tmp
+  with_items: "{{ images }}"
+  loop_control:
+    loop_var: image_item
+- name: Load & Push
+  shell: /usr/local/bin/load_tag_push.sh "/tmp/{{ image_item.file }}"  "{{ image_item.src }}"  "{{ image_prefix }}/{{ image_item.dest }}"
+  with_items: "{{ images }}"
+  loop_control:
+    loop_var: image_item

@@ -6,13 +6,6 @@
     - "{{ cert_src_path }}"
     - "{{ cert_dest_path }}"
     - "{{ registry_data_path }}"
-- name: Upload ca related files
-  copy:
-    src: "{{ cert_local_path }}/{{ item }}"
-    dest: "{{ cert_src_path }}"
-  with_items:
-    - "{{ cert_ca_cert_name }}"
-    - "{{ cert_ca_key_name }}"
 - name: Processing templates
   template:
     src: "templates/{{ item }}.j2"
@@ -20,29 +13,31 @@
   with_items:
     - "{{ cert_config_file }}"
     - "{{ cert_input_file }}"
-- name: Generating cert files
-  include_role: name="cert"
-- name: Get contents of cert.
-  shell: "cat {{ cert_src_path }}/{{ cert_ca_cert_name }}"
-  register: cert_content
-- debug: msg="{{ cert_content }}"
-- name: Clear CA files
-  file:
-    path: "{{ cert_src_path }}/{{ item }}"
-    state: absent
-  with_items:
-    - "{{ cert_ca_cert_name }}"
-    - "{{ cert_ca_key_name }}"
-- name: Trust certs
-  blockinfile:
-    path: "/etc/pki/tls/certs/ca-bundle.crt"
-    block: "{{ cert_content.stdout }}"
+    - "ca.csr.json"
+- name: Generating CA file
+  set_fact:
+    cert_task: "ca"
+- include_role: name="cert"
+- name: Get CA content
+  shell: "cat {{ cert_src_path }}/{{ ca_output_file }}.pem"
+  register: ca_content
+- name: Spread CA data to all docker
+  include: spread_ca.yml
+  delegate_to: "{{ item }}"
+  with_items: "{{ groups['remote'] }}"
+
+- name: Generating cert file
+  set_fact:
+    cert_profile_name: "server"
+    cert_task: "server"
+- include_role: name="cert"
+
 - name: Uploading image
   copy:
     src="files/images/registry.2.6.1.tar.gz"
     dest="/tmp"
 - name: Loading image
-  shell: "docker load -i /tmp/registry.2.6.1  .tar.gz"
+  shell: "docker load -i /tmp/registry.2.6.1.tar.gz"
 - name: Uploading starting shell script.
   template:
     src: "templates/docker-registry.sh.j2"

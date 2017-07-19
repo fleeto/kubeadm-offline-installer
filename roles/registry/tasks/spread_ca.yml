@@ -1,0 +1,8 @@
+- name: Trust CA
+  blockinfile:
+    path: "/etc/pki/tls/certs/ca-bundle.crt"
+    block: "{{ ca_content.stdout }}"
+- name: Restart Docker
+  service:
+    name: docker
+    state: restarted

@@ -13,5 +13,3 @@
   vars:
     current_image: "{{ item }}"
   with_items: "{{ kubeadm_images }}"
-- name: Enable kubelet service
-  service: name=kubelet enabled=yes

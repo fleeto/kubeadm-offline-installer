@@ -1,9 +1,0 @@
-- name: Fetch ca files from remote server
-  fetch:
-    src: "{{ cert_remote_path }}/{{ item }}"
-    dest: "{{ cert_local_path }}/{{ item }}"
-    flat: "yes"
-  with_items:
-    - "{{ cert_ca_cert_name }}"
-    - "{{ cert_ca_key_name }}"
-  ignore_errors: "yes"

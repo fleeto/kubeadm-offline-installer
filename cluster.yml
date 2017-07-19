@@ -3,12 +3,25 @@
     - common
     - docker
     - kubeadm
+- hosts: registry[0]
+  roles:
+    - registry
 - hosts: master
   roles:
     - master
+    - deploy
 - hosts: node
   roles:
     - node
-- hosts: master
-  roles:
-    - cleanup
+- hosts: remote
+  tasks:
+    - name: Upload config file for kubelet
+      template:
+        src: "templates/01-pause.conf.j2"
+        dest: "/etc/systemd/system/kubelet.service.d/01-pause.conf"
+    - name: Enable kubelet service
+      systemd:
+        name: kubelet
+        state: restarted
+        enabled: yes
+        daemon-reload: yes

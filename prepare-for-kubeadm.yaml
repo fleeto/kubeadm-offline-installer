@@ -2,4 +2,19 @@
   roles:
     - common
     - docker
-    - kubeadm
+  tasks:
+    - name: Add kubeadm yum repo
+      yum_repository:
+        name: kubernetes
+        description: Repository for kubernetes
+        baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+        gpgcheck: no
+
+    # - name: yum install
+    #   yum: name="{{ item }}" state="latest"
+    #   with_items:
+    #     - "kubelet"
+    #     - "kubeadm"
+    #   environment:
+    #     http_proxy: "{{ proxy_host }}:{{ proxy_port }}"
+    #     https_proxy: "{{ proxy_host }}:{{ proxy_port }}"
