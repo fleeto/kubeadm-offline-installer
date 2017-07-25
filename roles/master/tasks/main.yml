@@ -21,7 +21,7 @@
 - shell: "/tmp/get_join_command.sh"
 - fetch:
     src: "/tmp/cluster.join.sh"
-    dest: "/tmp"
+    dest: "/tmp/cluster.join.sh"
     flat: yes
   ignore_errors: yes
 # - name: 1.7.0 Only, buggy..
