@@ -1,6 +1,11 @@
 #!/bin/sh
 
 #-e REGISTRY_AUTH_HTPASSWD_PATH=/certs/auth.passwd  \
+if [ ! "$(docker ps -q -f name=registry2)" ]; then
+    docker stop registry2
+    if ["$(docker ps -aq -f status=exited -f name=registry2)" ]; then
+        docker rm registry2  
+    fi
 docker run -d \
    --name="registry2" \
    -v {{ registry_data_path }}:/var/lib/registry \
@@ -10,3 +15,5 @@ docker run -d \
   -e REGISTRY_HTTP_TLS_KEY=/certs/{{ cert_output_file }}-key.pem \
    --restart=always \
    registry:2.6.1
+fi
+
