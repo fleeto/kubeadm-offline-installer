@@ -1,6 +1,6 @@
 # kubeadm-offline-installer
 
-- Upgraded to v1.7.1
+- Upgraded to v1.8.0
 
 没有好的完整的网络连接，Kubernetes 是很难搞的。
 
@@ -11,8 +11,8 @@
 [Kubeadm](https://kubernetes.io/docs/setup/independent/install-kubeadm/) is a
 great way to set up a kubernetes cluster.
 
-But every time I'm setting up a new cluster with it, I have to keep the internet connection,
-and do something like
+But every time I'm setting up a new cluster with it, I have to keep the internet
+connection, and do something like
 `cat xxx EOF `, `yum install xxx`, when kubeadm finished, I still have to copy
 config file, ca certs and save the tokens. this is boring, so I composed this
 playbook, working for minimal CentOS 7, can install a cluster without internet.
