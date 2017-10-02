@@ -6,6 +6,12 @@
   with_items:
     - firewalld
   ignore_errors: yes
+- name: sysctl.
+  sysctl:
+    name: net.bridge.bridge-nf-call-iptables
+    value: 1
+    state: present
+  ignore_errors: yes
 - name: Remove search line in /etc/resolv.conf
   lineinfile:
     path: /etc/resolv.conf

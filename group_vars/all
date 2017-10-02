@@ -1,10 +1,10 @@
 
-main_version: "v1.7.1"
+main_version: "v1.8.0"
 etcd_version: "3.0.17"
-dns_version: "1.14.4"
+dns_version: "1.14.5"
 pause_version: "3.0"
-kubeadm_version: "v1.7.1"
-kubeadm_init_options: ""
+kubeadm_version: "v1.8.0"
+kubeadm_init_options: " --skip-preflight-checks --pod-network-cidr=192.168.0.0/16"
 
 # Proxy Related
 proxy_host: "10.211.55.2"

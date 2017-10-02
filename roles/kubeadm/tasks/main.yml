@@ -1,5 +1,5 @@
 - name: Processing rpms
-  include: rpm.yml
+  include_tasks: rpm.yml
   vars:
     current_rpm: "{{ item }}"
   with_items: "{{ kubeadm_rpms }}"
@@ -8,8 +8,18 @@
     name: "/tmp/{{ item }}.rpm"
     state: present
   with_items: "{{ kubeadm_rpms }}"
+- name: 1.8 , add extra lines into kubelet sevice
+  copy:
+    src: files/10-kubeadm.conf
+    dest: /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+- name: Start kubelet
+  systemd:
+    name: kubelet
+    state: started
+    enabled: yes
+    daemon_reload: yes
 - name: Processing images
-  include: image.yml
+  include_tasks: image.yml
   vars:
     current_image: "{{ item }}"
   with_items: "{{ kubeadm_images }}"

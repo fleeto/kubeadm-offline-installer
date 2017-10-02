@@ -1,5 +1,5 @@
 kubeadm_rpms:
-  - "socat-1.7.2.2"
+  - "socat-1.7.3.2"
   - "kubectl-{{ main_version }}"
   - "kubernetes-cni-0.5.1"
   - "kubelet-{{ main_version }}"
@@ -10,12 +10,7 @@ kubeadm_images:
   - "kube-controller-manager-amd64-{{ main_version }}"
   - "kube-proxy-amd64-{{ main_version }}"
   - "kube-scheduler-amd64-{{ main_version }}"
-  - "k8s-kube-dns-amd64-{{ dns_version }}"
+  - "k8s-dns-kube-dns-amd64-{{ dns_version }}"
   - "k8s-dns-sidecar-amd64-{{ dns_version }}"
-  - "k8s-dnsmasq-nanny-amd64-{{ dns_version }}"
+  - "k8s-dns-dnsmasq-nanny-amd64-{{ dns_version }}"
   - "pause-amd64-{{ pause_version }}"
-calico_images:
-  - "cni-v1.9.1"
-  - "etcd-2.2.1"
-  - "node-v1.3.0"
-  - "kube-policy-controller-v0.6.0"

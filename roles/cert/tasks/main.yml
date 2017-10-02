@@ -3,4 +3,4 @@
     src: files/cfssl.tar.gz
     dest: /usr/local/bin
 - name: Select the task
-  include: "{{cert_task}}.yml"
+  include_tasks: "{{cert_task}}.yml"
