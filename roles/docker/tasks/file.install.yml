@@ -1,8 +1,8 @@
 - name: copy rpm files
-  copy: src=files/{{ item }}  dest=/tmp/{{ item }}
+  copy: src=files/docker/{{ item }}  dest=/tmp/{{ item }}
   with_items: "{{ docker_package }}"
 - name: copy rpm files
-  copy: src=files/docker.engine.rpm   dest=/tmp/
+  copy: src=files/docker/docker.engine.rpm   dest=/tmp/
 - name: install rpm files
   yum: name=/tmp/{{ item }} state=present
   with_items: "{{ docker_package }}"

@@ -12,9 +12,5 @@
     value: 1
     state: present
   ignore_errors: yes
-- name: Remove search line in /etc/resolv.conf
-  lineinfile:
-    path: /etc/resolv.conf
-    state: absent
-    regexp: '^search\s+.*?$'
-  when: remove_search_in_resolve == 1
+- name: Turning off swap.
+  include_tasks: noswap.yml

@@ -8,10 +8,10 @@
     name: "/tmp/{{ item }}.rpm"
     state: present
   with_items: "{{ kubeadm_rpms }}"
-- name: 1.8 , add extra lines into kubelet sevice
-  copy:
-    src: files/10-kubeadm.conf
-    dest: /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+# - name: 1.8 , add extra lines into kubelet sevice
+#   copy:
+#     src: files/10-kubeadm.conf
+#     dest: /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 - name: Start kubelet
   systemd:
     name: kubelet

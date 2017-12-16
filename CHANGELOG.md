@@ -1,3 +1,17 @@
+
+## 12/16/2017
+
+Upgraded to 1.9
+
+Fixed:
+
+- Remove useless groups from `host.sample`.
+
+Added:
+
+- Swap off.
+- Moved docker rpm files into sperated path.
+
 ## 02/29/2017
 Upgraded to 1.7.1.
 Removed tricks for 1.7.0.

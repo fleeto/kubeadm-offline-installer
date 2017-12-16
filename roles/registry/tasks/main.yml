@@ -34,10 +34,10 @@
 
 - name: Uploading image
   copy:
-    src="files/images/registry.2.6.1.tar.gz"
+    src="files/images/registry-2.6.2.tar.gz"
     dest="/tmp"
 - name: Loading image
-  shell: "docker load -i /tmp/registry.2.6.1.tar.gz"
+  shell: "docker load -i /tmp/registry-2.6.2.tar.gz"
 - name: Uploading starting shell script.
   template:
     src: "templates/docker-registry.sh.j2"
