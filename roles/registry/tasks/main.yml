@@ -22,8 +22,7 @@
   shell: "cat {{ cert_src_path }}/{{ ca_output_file }}.pem"
   register: ca_content
 - name: Spread CA data to all docker
-  include_tasks: spread_ca.yml
-  delegate_to: "{{ item }}"
+  include_tasks: spread_ca.yml  
   with_items: "{{ groups['remote'] }}"
 
 - name: Generating cert file

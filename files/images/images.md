@@ -1,4 +1,4 @@
 - kubeadm
 - registry
 - calico
-- kube-dns
+- coredns

@@ -6,6 +6,7 @@
 - hosts: registry[0]
   roles:
     - registry
+
 - hosts: master
   roles:
     - master
@@ -25,12 +26,3 @@
         state: restarted
         enabled: yes
         daemon-reload: yes
-# - hosts: master[0]
-#   tasks:
-#   - name: Upload approver.
-#     copy:
-#       src: files/auto_approve_csr.sh
-#       dest: /usr/local/bin
-#       mode: 0755
-#   - name: approve csr
-#     shell: /usr/local/bin/auto_approve_csr.sh

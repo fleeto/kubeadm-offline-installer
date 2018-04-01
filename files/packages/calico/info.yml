@@ -1,10 +1,10 @@
 images:
-  - file: "node-v2.6.1.tar.gz"
-    src: "quay.io/calico/node:v2.6.1"
-    dest: "calico/node:v2.6.1"
-  - file: "cni-v1.11.0.tar.gz"
-    src: "quay.io/calico/cni:v1.11.0"
-    dest: "calico/cni:v1.11.0"
+  - file: "node-v3.0.4.tar.gz"
+    src: "quay.io/calico/node:v3.0.4"
+    dest: "calico/node:v3.0.4"
+  - file: "cni-v2.0.3.tar.gz"
+    src: "quay.io/calico/cni:v2.0.3"
+    dest: "calico/cni:v2.0.3"
 templates:
   - calico.yaml
 entry:
