@@ -1,6 +1,6 @@
 # kubeadm offline installer
 
- 目前支持到 1.9.0。
+目前支持到 1.9.0。
 
 没有好的完整的网络连接，Kubernetes 是很难搞的。
 
