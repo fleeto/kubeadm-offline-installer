@@ -1,6 +1,6 @@
 # kubeadm offline installer
 
-[![screen-shot](https://www.youtube.com/upload_thumbnail?v=9_tsLQo5S_w&t=hqdefault&ts=1522586918291)](https://youtu.be/9_tsLQo5S_w)
+[![screen-shot](files/screenshot.png)](https://youtu.be/9_tsLQo5S_w)
 
 目前支持到 1.1.0。
 
