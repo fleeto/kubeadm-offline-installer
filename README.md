@@ -1,6 +1,16 @@
 # kubeadm offline installer
 
-目前支持到 1.9.0。
+[![screen-shot](https://www.youtube.com/upload_thumbnail?v=9_tsLQo5S_w&t=hqdefault&ts=1522586918291)](https://youtu.be/9_tsLQo5S_w)
+
+目前支持到 1.1.0。
+
+|组件|版本|
+|---|---|
+|Kubernetes|1.10|
+|Docker|1.12.3|
+|Calico|3.0.4|
+|CoreDNS|1.0.6|
+
 
 没有好的完整的网络连接，Kubernetes 是很难搞的。
 
@@ -38,7 +48,14 @@ Kubernetes 集群的方法。
 
 > Setup a cluster with kubeadm, without internet connections.
 
-- Upgraded to v1.9.0
+- Upgraded to v1.10.0
+
+|Component|Version|
+|---|---|
+|Kubernetes|1.10|
+|Docker|1.12.3|
+|Calico|3.0.4|
+|CoreDNS|1.0.6|
 
 [Kubeadm](https://kubernetes.io/docs/setup/independent/install-kubeadm/) is a
 great way to set up a kubernetes cluster.

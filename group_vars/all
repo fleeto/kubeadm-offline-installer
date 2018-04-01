@@ -12,7 +12,7 @@ proxy_port: "8016"
 proxy_env:
   - http_proxy: ""
     https_proxy: ""
-docker_proxy: 1
+docker_proxy: 0
 
 remove_search_in_resolve: 1
 
