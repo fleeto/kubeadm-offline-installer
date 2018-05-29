@@ -3,7 +3,9 @@ TOKEN=`kubeadm token list | grep boot | awk '{print $1}'`
 
 cat <<EOF >/tmp/cluster.join.sh
 #!/bin/sh
-kubeadm join --token $TOKEN {{ master_url }} --discovery-token-unsafe-skip-ca-verification
+kubeadm join --token $TOKEN {{ master_url }} \
+--discovery-token-unsafe-skip-ca-verification \
+--ignore-preflight-errors=all
 
 EOF
 

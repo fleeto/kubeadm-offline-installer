@@ -1,5 +1,0 @@
----
-- stat: path={{ datadev }}
-  register: data_dev_stat
-- template: src=templates/storage.lvm.conf.j2 dest=/etc/systemd/system/docker.service.d/storage.conf
-  when: data_dev_stat.stat.exists == True

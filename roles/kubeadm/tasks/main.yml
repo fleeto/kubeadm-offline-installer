@@ -8,14 +8,19 @@
     name: "/tmp/{{ item }}.rpm"
     state: present
   with_items: "{{ kubeadm_rpms }}"
+
+- name: Adding contaierd into kubelet
+  copy:
+    src: files/containerd.conf
+    dest: /etc/systemd/system/kubelet.service.d
 - name: Start kubelet
   systemd:
     name: kubelet
     state: started
     enabled: yes
     daemon_reload: yes
-- name: Processing images
-  include_tasks: image.yml
-  vars:
-    current_image: "{{ item }}"
-  with_items: "{{ kubeadm_images }}"
+# - name: Processing images
+#   include_tasks: image.yml
+#   vars:
+#     current_image: "{{ item }}"
+#   with_items: "{{ kubeadm_images }}"

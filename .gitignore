@@ -6,3 +6,5 @@ hosts.private.*
 *.gz
 *.rpm
 test.yml
+containerd/*
+*.tar

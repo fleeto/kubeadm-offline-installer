@@ -6,11 +6,14 @@
   with_items:
     - firewalld
   ignore_errors: yes
-- name: sysctl.
+- name: sysctl
   sysctl:
-    name: net.bridge.bridge-nf-call-iptables
+    name: "{{ item }}"
     value: 1
     state: present
+  with_items:
+    - net.ipv4.ip_forward
+    - net.bridge.bridge-nf-call-iptables
   ignore_errors: yes
 - name: Turning off swap.
   include_tasks: noswap.yml

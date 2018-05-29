@@ -1,4 +1,0 @@
-#!/bin/sh
-INPUT="{{ cert_src_path }}/{{ ca_input_file }}"
-OUTPUT="{{ cert_src_path }}/{{ ca_output_file }}"
-/usr/local/bin/cfssl gencert -initca "$INPUT" | /usr/local/bin/cfssljson -bare "$OUTPUT"

@@ -1,9 +1,0 @@
-#!/bin/sh
-CA={{cert_src_path}}/{{ cert_ca_cert_name }}
-CA_KEY={{ cert_src_path }}/{{ cert_ca_key_name }}
-CONFIG={{ cert_src_path }}/{{ cert_config_file }}
-PROFILE={{ cert_profile_name }}
-JSON={{ cert_src_path }}/{{ cert_input_file }}
-OUTPUT={{ cert_dest_path }}/{{ cert_output_file }}
-/usr/local/bin/cfssl gencert -ca $CA -ca-key $CA_KEY -config=$CONFIG \
-  -profile=$PROFILE $JSON | /usr/local/bin/cfssljson -bare $OUTPUT

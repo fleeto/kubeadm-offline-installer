@@ -7,10 +7,9 @@
 |组件|版本|
 |---|---|
 |Kubernetes|1.10|
-|Docker|1.12.3|
+|Containerd|1.1.0|
 |Calico|3.0.4|
-|CoreDNS|1.0.6|
-
+|CoreDNS|1.1.3|
 
 没有好的完整的网络连接，Kubernetes 是很难搞的。
 

@@ -1,0 +1,50 @@
+- name: Copy files
+  copy:
+    src: "files/containerd/{{ item.file }}"
+    dest: "/{{ item.file }}"
+    mode: "{{ item.mode }}"
+  with_items: "{{ containerd_file_list }}"
+- name: Copy rpms
+  copy:
+    src: "files/rpms/{{ item }}"
+    dest: "/tmp"
+  with_items: "{{ containerd_rpm_list }}"
+- name: install rpms
+  yum: name=/tmp/{{ item }} state=present
+  with_items: "{{ containerd_rpm_list }}"
+- name: Ensure path exists for env files.
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+  - /etc/systemd/system/containerd.service.d/
+  - /etc/containerd/
+- name: Make proxy.conf if we need it.
+  template: src=templates/proxy.conf.j2 dest=/etc/systemd/system/containerd.service.d/proxy.conf
+  when: (proxy_host | default("") != "") and (docker_proxy == 1)
+- name: Service file template
+  template:
+    src: templates/containerd.service.j2
+    dest: /etc/systemd/system/containerd.service
+- name: Containerd Config file template
+  template:
+    src: templates/config.toml.j2
+    dest: /etc/containerd/config.toml
+- name: crictl Config file template
+  template:
+    src: templates/crictl.yaml.j2
+    dest: /etc/crictl.yaml
+- name: Refresh systemd
+  systemd:
+    name: containerd
+    state: started
+    enabled: yes
+    daemon_reload: yes
+- name: Upload Images
+  copy:
+    src: "files/images/{{ item }}"
+    dest: "/tmp/{{ item }}"
+  with_items: "{{ image_list }}"
+- name: Load Images
+  shell: "ctr cri load /tmp/{{ item }}"
+  with_items: "{{ image_list }}"

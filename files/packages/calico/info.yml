@@ -1,11 +1,7 @@
-images:
-  - file: "node-v3.0.4.tar.gz"
-    src: "quay.io/calico/node:v3.0.4"
-    dest: "calico/node:v3.0.4"
-  - file: "cni-v2.0.3.tar.gz"
-    src: "quay.io/calico/cni:v2.0.3"
-    dest: "calico/cni:v2.0.3"
+images: []
 templates:
   - calico.yaml
+  - rbac-kdd.yaml
 entry:
   - calico.yaml
+  - rbac-kdd.yaml

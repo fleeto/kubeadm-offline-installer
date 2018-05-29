@@ -1,0 +1,32 @@
+containerd_file_list:
+- file: usr/local/bin/containerd-release
+  mode: 755
+- file: usr/local/bin/containerd-stress
+  mode: 755
+- file: usr/local/bin/ctr
+  mode: 755
+- file: usr/local/bin/containerd
+  mode: 755
+- file: usr/local/bin/critest
+  mode: 755
+- file: usr/local/bin/containerd-shim
+  mode: 755
+- file: usr/local/bin/crictl
+  mode: 755
+- file: usr/local/sbin/runc
+  mode: 755
+containerd_rpm_list:
+- libseccomp-2.3.1.rpm
+log_level: error
+registry_mirror: https://registry-1.docker.io
+image_list:
+- cni-v3.1.1.tar
+- coredns-v1.0.6.tar
+- kube-proxy-v1.10.3.tar
+- node-v3.1.1.tar
+- typha-v0.7.2.tar
+- etcd-v3.1.12.tar
+- kube-apiserver-v1.10.3.tar
+- kube-controller-manager-v1.10.3.tar
+- kube-scheduler-v1.10.3.tar
+- pause-v3.1.tar

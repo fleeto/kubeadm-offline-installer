@@ -1,10 +1,10 @@
 
-main_version: "v1.10.0"
+main_version: "1.10.3"
 etcd_version: "3.1.12"
 coredns_version: "1.0.6"
 pause_version: "3.1"
-kubeadm_version: "v1.10.0"
-kubeadm_init_options: " --pod-network-cidr=192.168.0.0/16 --feature-gates CoreDNS=true"
+kubeadm_version: "1.10.3"
+kubeadm_init_options: " --pod-network-cidr=192.168.0.0/16 --feature-gates CoreDNS=true --ignore-preflight-errors=Service-Docker --ignore-preflight-errors=SystemVerification --kubernetes-version=v1.10.3"
 
 # Proxy Related
 proxy_host: "10.211.55.2"
@@ -12,7 +12,7 @@ proxy_port: "8016"
 proxy_env:
   - http_proxy: ""
     https_proxy: ""
-docker_proxy: 0
+docker_proxy: 1
 
 remove_search_in_resolve: 1
 

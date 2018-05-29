@@ -1,6 +1,0 @@
-- name: Uploading CFSSL executable.
-  unarchive:
-    src: files/cfssl.tar.gz
-    dest: /usr/local/bin
-- name: Select the task
-  include_tasks: "{{cert_task}}.yml"

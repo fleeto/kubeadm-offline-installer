@@ -1,5 +1,0 @@
-- name: Generate yum repo for docker if docker_repo_base_url is defined.
-  template: src=templates/docker.repo.j2 dest=/etc/yum.repos.d/docker.repo
-- name: Install docker.
-  package: name=docker-engine state=installed
-  environment: "{{ proxy_env }}"
