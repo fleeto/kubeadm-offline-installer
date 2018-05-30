@@ -1,4 +1,0 @@
-- kubeadm
-- registry
-- calico
-- coredns
