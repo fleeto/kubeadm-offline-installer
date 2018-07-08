@@ -1,5 +1,11 @@
 # kubeadm offline installer
 
+Release 始终无法上传成功，改用百度盘发布：
+
+链接: https://pan.baidu.com/s/1ODiTjL4ECFDkr4nWEMPz6A
+
+密码: nk58
+
 [![screen-shot](files/screenshot.png)](https://youtu.be/9_tsLQo5S_w)
 
 - Kubernetes 1.11
@@ -43,6 +49,12 @@ Kubernetes 集群的方法。
 ---
 
 > Setup a cluster with kubeadm, without internet connections.
+
+Can't upload release file to github for a few months. You can download new releases here:
+
+Link: https://pan.baidu.com/s/1ODiTjL4ECFDkr4nWEMPz6A
+
+Passcode: nk58
 
 - Kubernetes v1.10.0
 - Kubernetes 1.11
