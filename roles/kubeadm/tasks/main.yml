@@ -3,11 +3,16 @@
   vars:
     current_rpm: "{{ item }}.rpm"
   with_items: "{{ kubeadm_rpms }}"
+  when: ansible_distribution == "CentOS"
 - name: Install rpms
   yum:
     name: "/tmp/{{ item }}.rpm"
     state: present
   with_items: "{{ kubeadm_rpms }}"
+  when: ansible_distribution == "CentOS"
+- name: Installing debs
+  include_tasks: deb.yml
+  when: ansible_distribution == "Ubuntu"
 - name: Start kubelet
   systemd:
     name: kubelet

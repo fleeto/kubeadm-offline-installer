@@ -2,7 +2,9 @@
 - set_fact:
     local_path: "files/packages/{{ current_package }}"
     remote_path: "{{ yaml_root }}/{{ current_package }}"
-- file: path="{{ remote_path }}" state=directory
+- file: 
+    path: "{{ remote_path }}" 
+    state: directory
 - name: Processing templates
   template:
     src: "{{ local_path }}/{{ tmpl_item }}.j2"
@@ -11,7 +13,7 @@
   loop_control:
     loop_var: tmpl_item
 - name: Create the entry yaml
-  shell: "kubectl create -f {{ remote_path }}/{{ entry_item }}"
+  shell: "kubectl create --kubeconfig=/etc/kubernetes/admin.conf -f {{ remote_path }}/{{ entry_item }}"
   with_items: "{{ entry }}"
   loop_control:
     loop_var: entry_item

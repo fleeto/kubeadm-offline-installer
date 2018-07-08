@@ -3,6 +3,19 @@
     path: "/etc/pki/tls/certs/ca-bundle.crt"
     block: "{{ ca_content.stdout }}"
   delegate_to: "{{ item }}"
+  when: ansible_distribution == "CentOS"
+
+- name: upload ca.pem
+  blockinfile: 
+    path: "/usr/local/share/ca-certificates/ca.crt"
+    block: "{{ ca_content.stdout }}"
+    create: "yes"
+  delegate_to: "{{ item }}"    
+  when: ansible_distribution == 'Ubuntu'
+- name: Update certs
+  shell: "update-ca-certificates"
+  delegate_to: "{{ item }}"
+  when: ansible_distribution == 'Ubuntu'  
 - name: Restart Docker
   service:
     name: docker

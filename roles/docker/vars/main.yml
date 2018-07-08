@@ -32,3 +32,12 @@ docker_package:
 - selinux-policy-targeted-3.13.1-192.el7_5.4.noarch.rpm
 - setools-libs-3.3.8-2.el7.x86_64.rpm
 - docker-ce-18.03.1.ce-1.el7.centos.x86_64.rpm
+
+docker_deb:
+- libltdl7_2.4.6-2_amd64.deb
+- bridge-utils_1.5-15ubuntu1_amd64.deb
+- cgroupfs-mount_1.4_all.deb
+- dnsmasq-base_2.79-1_amd64.deb
+- dns-root-data_2018013001_all.deb
+- ubuntu-fan_0.12.10_all.deb
+- docker.io_17.12.1-0ubuntu1_amd64.deb

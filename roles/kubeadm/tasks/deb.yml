@@ -1,0 +1,8 @@
+- name: Uploading deb files
+  copy:
+    src: "files/kube/deb/{{ item }}"
+    dest: "/tmp/{{ item }}"
+  with_items: "{{ kubeadm_debs }}"
+- name: Install deb files
+  shell: "dpkg -i /tmp/{{ item }}"
+  with_items: "{{ kubeadm_debs }}"

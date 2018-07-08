@@ -14,3 +14,13 @@ kubeadm_images:
   - "coredns-{{ coredns_version }}"
   - "pause-amd64-{{ pause_version }}"
   - "pause-{{ pause_version }}"
+kubeadm_debs:
+- ebtables_2.0.10.4-3.5ubuntu2.18.04.3_amd64.deb
+- apt-transport-https_1.6.2_all.deb
+- cri-tools_1.11.0-00_amd64.deb
+- ethtool_1%3a4.15-0ubuntu1_amd64.deb
+- socat_1.7.3.2-2ubuntu2_amd64.deb
+- kubernetes-cni_0.6.0-00_amd64.deb
+- kubectl_1.11.0-00_amd64.deb
+- kubelet_1.11.0-00_amd64.deb
+- kubeadm_1.11.0-00_amd64.deb

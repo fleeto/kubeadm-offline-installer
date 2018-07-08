@@ -18,7 +18,8 @@
   set_fact:
     cert_task: "ca"
 - name: Execute cert role
-  include_role: name="cert"
+  include_role:
+    name: "cert"
 - name: Get CA content
   shell: "cat {{ cert_src_path }}/{{ ca_output_file }}.pem"
   register: ca_content
@@ -34,8 +35,8 @@
 
 - name: Uploading image
   copy:
-    src="files/images/registry-2.6.2.tar.gz"
-    dest="/tmp"
+    src: "files/images/registry-2.6.2.tar.gz"
+    dest: "/tmp"
 - name: Loading image
   shell: "docker load -i /tmp/registry-2.6.2.tar.gz"
 - name: Uploading starting shell script.

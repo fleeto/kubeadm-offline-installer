@@ -1,39 +1,43 @@
 ---
 - name: Install docker from local rpm.
   import_tasks: "yum.install.yml"
+  when: ansible_distribution == "CentOS"
+- name: Install docker from local rpm.
+  import_tasks: "deb.install.yml"
+  when: ansible_distribution == "Ubuntu"
 - name: Creates directory
-  file: 
-    path: /etc/systemd/system/docker.service.d/ 
+  file:
+    path: /etc/systemd/system/docker.service.d/
     state: directory
 
 - name: Create Service file
-  template: 
-    src: templates/docker.service.j2 
-    dest: /usr/lib/systemd/system/docker.service
+  template:
+    src: templates/docker.service.j2
+    dest: /etc/systemd/system/docker.service
 
 - name: Log Size
-  template: 
-    src: templates/log.conf.j2 
+  template:
+    src: templates/log.conf.j2
     dest: /etc/systemd/system/docker.service.d/log.conf
 
 - name: Common direct-lvm
   import_tasks: direct-lvm.yml
-  when: datadev != ""
+  when: (ansible_distribution == "CentOS") and (datadev != "" )
 - name: Thinpool lvm
   import_tasks: thinpool.yml
-  when: thinpooldev != ""
+  when: (ansible_distribution == "CentOS") and (thinpooldev != "")
 
 # if proxy_host != "" and docker_proxy==1 , then make a proxy env file for docker
 - name: Make proxy.conf if we need it.
-  template: 
-    src: templates/proxy.conf.j2 
+  template:
+    src: templates/proxy.conf.j2
     dest: /etc/systemd/system/docker.service.d/proxy.conf
   when: (proxy_host | default("") != "") and (docker_proxy == 1)
 
 - name: Refresh systemd
   shell: systemctl daemon-reload
 - name: Enable the service
-  service: 
-    name: docker 
-    state: started 
+  service:
+    name: docker
+    state: started
     enabled: yes

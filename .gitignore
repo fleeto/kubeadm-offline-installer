@@ -7,3 +7,5 @@ hosts.private.*
 *.rpm
 *.tar
 test.yml
+*.tgz
+*.deb

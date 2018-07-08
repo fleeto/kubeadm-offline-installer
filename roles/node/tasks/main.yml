@@ -1,4 +1,12 @@
+- name: get token
+  shell: "kubeadm token list | grep boot | awk '{print $1}'"
+  register: token
+  delegate_to: "{{ groups['master'][0] }}"
+
 - name: Upload script
-  copy: src="/tmp/cluster.join.sh" dest="/usr/local/bin" mode=0755
+  template: 
+    src: "templates/cluster.join.sh.j2"
+    dest: "/usr/local/bin/cluster.join.sh"
+    mode: 0755
 - name: Join the cluster
   shell: "/usr/local/bin/cluster.join.sh"

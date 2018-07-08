@@ -1,0 +1,2 @@
+#!/bin/sh
+kubeadm join --node-name {{ inventory_hostname }}  --token {{ token.stdout }} {{ groups['master'][0] }}:6443 --discovery-token-unsafe-skip-ca-verification

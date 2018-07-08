@@ -1,0 +1,8 @@
+- name: Uploading deb files
+  copy:
+    src: "files/docker/deb/{{ item }}"
+    dest: "/tmp/{{ item }}"
+  with_items: "{{ docker_deb }}"
+- name: Install deb files
+  shell: "dpkg -i /tmp/{{ item }}"
+  with_items: "{{ docker_deb }}"

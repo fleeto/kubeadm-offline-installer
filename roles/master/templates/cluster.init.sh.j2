@@ -1,2 +1,2 @@
 #!/bin/sh
-kubeadm init --kubernetes-version {{ main_version }} {{ kubeadm_init_options }}
+kubeadm init --node-name={{ inventory_hostname }} --kubernetes-version {{ main_version }} {{ kubeadm_init_options }}
