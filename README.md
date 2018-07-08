@@ -2,14 +2,10 @@
 
 [![screen-shot](files/screenshot.png)](https://youtu.be/9_tsLQo5S_w)
 
-目前支持到 1.1.0。
-
-|组件|版本|
-|---|---|
-|Kubernetes|1.10|
-|Docker|1.12.3|
-|Calico|3.0.4|
-|CoreDNS|1.0.6|
+- Kubernetes 1.11
+- Calico 3.1.3 (Without ETCD)
+- Docker-ce 18.03
+- CoreDNS 1.1.3
 
 
 没有好的完整的网络连接，Kubernetes 是很难搞的。
@@ -29,7 +25,7 @@ Kubernetes 集群的方法。
 
 `ansible-playbook -i hosts/hosts.sample -u root cluster.yml`
 
-1. 需要 2.4.0 以上版本的 ansible。
+1. 需要 2.4.0 以上版本的 ansible，CentOS 7.x Minimal 版本。
 2. 从 [Releases 页](https://github.com/fleeto/kubeadm-offline-installer/releases) 下载和解压所需版本。
 3. 编写 Host 文件，分组方式可以参考 `hosts/hosts.sample`。
 4. `group_vars/all` 中有部分可以修改的变量。
@@ -48,14 +44,11 @@ Kubernetes 集群的方法。
 
 > Setup a cluster with kubeadm, without internet connections.
 
-- Upgraded to v1.10.0
-
-|Component|Version|
-|---|---|
-|Kubernetes|1.10|
-|Docker|1.12.3|
-|Calico|3.0.4|
-|CoreDNS|1.0.6|
+- Kubernetes v1.10.0
+- Kubernetes 1.11
+- Calico 3.1.3 (Without ETCD)
+- Docker-ce 18.03
+- CoreDNS 1.1.3
 
 [Kubeadm](https://kubernetes.io/docs/setup/independent/install-kubeadm/) is a
 great way to set up a kubernetes cluster.
@@ -70,7 +63,7 @@ playbook, working for minimal CentOS 7, can install a cluster without internet.
 
 `ansible-playbook -i hosts/hosts.sample -u root cluster.yml`
 
-1. install ansible version >= 2.4.0
+1. install ansible version >= 2.4.0，CentOS 7.x Minimal
 2. Download and extract bin package from [Releases tab](https://github.com/fleeto/kubeadm-offline-installer/releases)
 3. Write down ip in the hosts file, here is a sample in `hosts/hosts.sample`.
 4. Change the variables in `group_vars/all`.
