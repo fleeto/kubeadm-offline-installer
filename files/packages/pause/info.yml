@@ -1,5 +1,5 @@
 images:
-  - file: "pause-amd64-3.1.tar.gz"
+  - file: "pause-v3.1.tar.gz"
     src: "k8s.gcr.io/pause-amd64:3.1"
     dest: "pause:3.1"
 templates: []

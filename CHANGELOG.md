@@ -1,3 +1,11 @@
+## 07/08/2018
+
+Upgraded:
+
+- Kubernetes 1.11
+- Calico 3.1.3 (Without ETCD)
+- Docker-ce 18.03
+- CoreDNS 1.1.3
 
 ## 12/16/2017
 

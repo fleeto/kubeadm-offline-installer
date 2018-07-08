@@ -1,6 +1,6 @@
 - name: Uploading "{{ current_image }}"
   copy:
-    src="files/images/{{ current_image }}.tar.gz"
-    dest="/tmp"
+    src: "files/kube/image/{{ current_image }}.tar.gz"
+    dest: "/tmp"
 - name: Loading "{{ current_image }}"
   shell: "docker load -i /tmp/{{ current_image }}.tar.gz"

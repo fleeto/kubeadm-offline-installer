@@ -1,4 +1,4 @@
 - name: Uploading "{{ current_rpm }}"
   copy:
-    src="files/rpms/{{ current_rpm }}.rpm"
-    dest="/tmp"
+    src: "files/kube/rpm/{{ current_rpm }}"
+    dest: "/tmp"

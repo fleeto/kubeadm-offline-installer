@@ -1,13 +1,18 @@
 - name: Push utils into host.
-  copy: src=utils/load_tag_push.sh dest=/usr/local/bin/ mode=0755
+  copy:
+    src: utils/load_tag_push.sh
+    dest: /usr/local/bin/
+    mode: 0755
 - name: set image prefix
   set_fact:
     image_prefix: "{{ groups['registry'][0]}}:{{ registry_port}}"
-- include_tasks: "image.yml"
+- name: Processing images
+  include_tasks: "image.yml"
   vars:
     current_package: "{{ item }}"
   with_items: "{{ deploy_package }}"
-- include_tasks: "template.yml"
+- name: Processing yaml files
+  include_tasks: "template.yml"
   vars:
     current_package: "{{ item }}"
   with_items: "{{ deploy_package }}"

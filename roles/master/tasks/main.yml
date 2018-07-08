@@ -6,16 +6,22 @@
 - name: kubeadm init
   shell: "/usr/local/bin/cluster.init.sh"
 - name: Move config file
-  file: path="/root/.kube" state="directory"
+  file:
+    path: "/root/.kube"
+    state: "directory"
 - shell: "cp /etc/kubernetes/admin.conf /root/.kube/config"
+
 - name: Create shell script to add node to the cluster
-  set_fact: master_url="{{ groups['master'][0] }}:6443"
-- template:
+  set_fact:
+    master_url: "{{ groups['master'][0] }}:6443"
+- name: Createing join command
+  template:
     src: "templates/get_join_command.sh.j2"
     dest: "/tmp/get_join_command.sh"
     mode: 0755
 - shell: "/tmp/get_join_command.sh"
-- fetch:
+- name: fetching shell scripts.
+  fetch:
     src: "/tmp/cluster.join.sh"
     dest: "/tmp/cluster.join.sh"
     flat: yes

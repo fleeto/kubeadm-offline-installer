@@ -1,7 +1,7 @@
-- name: Processing rpms
+- name: Uploading rpms
   include_tasks: rpm.yml
   vars:
-    current_rpm: "{{ item }}"
+    current_rpm: "{{ item }}.rpm"
   with_items: "{{ kubeadm_rpms }}"
 - name: Install rpms
   yum:
@@ -15,7 +15,7 @@
     enabled: yes
     daemon_reload: yes
 - name: Processing images
-  include_tasks: image.yml
+  include_tasks:  image.yml
   vars:
     current_image: "{{ item }}"
   with_items: "{{ kubeadm_images }}"

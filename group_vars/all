@@ -1,9 +1,9 @@
 
-main_version: "v1.10.0"
-etcd_version: "3.1.12"
-coredns_version: "1.0.6"
+main_version: "1.11.0"
+etcd_version: "3.2.18"
+coredns_version: "1.1.3"
 pause_version: "3.1"
-kubeadm_version: "v1.10.0"
+kubeadm_version: "1.11.0"
 kubeadm_init_options: " --pod-network-cidr=192.168.0.0/16 --feature-gates CoreDNS=true"
 
 # Proxy Related
@@ -12,7 +12,7 @@ proxy_port: "8016"
 proxy_env:
   - http_proxy: ""
     https_proxy: ""
-docker_proxy: 0
+docker_proxy: 1
 
 remove_search_in_resolve: 1
 
